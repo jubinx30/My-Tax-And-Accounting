@@ -25,12 +25,12 @@ export default function Header({
           </div>
         </div>
 
-        {/* Centered screen title */}
-        <div className="absolute left-1/2 -translate-x-1/2 pointer-events-none">
-          <h1 className="text-[15px] font-bold text-[#1E252D] tracking-tight">
-            {title}
-          </h1>
-        </div>
+      {/* Centered screen title */}
+      <div className="absolute left-1/2 -translate-x-1/2">
+        <h1 className="text-[15px] font-bold text-[#1E252D] tracking-tight">
+          {title}
+        </h1>
+      </div>
 
         {/* Right notification bell with unread badge and user avatar */}
         <div className="flex items-center gap-2.5">

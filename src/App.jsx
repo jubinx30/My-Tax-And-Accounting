@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StatusBar from './components/StatusBar';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -52,65 +53,84 @@ export default function App() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#FBF9F7] text-[#1B1C1B] font-['Plus_Jakarta_Sans',sans-serif] flex flex-col antialiased selection:bg-[#834F3A]/30 selection:text-[#834F3A]">
-      {/* Top Header: edge-to-edge full width */}
-      {isAuthenticated && currentTab !== 'welcome' && (
-        <Header
-          title={getScreenTitle()}
-          unreadCount={2}
-          onNotificationClick={() => setIsNotificationOpen(true)}
-          onProfileClick={() => setCurrentTab('profile')}
-        />
-      )}
+    <div className="w-full min-h-screen bg-[#FBF9F7] md:bg-[#ECE7E1] text-[#1B1C1B] font-['Plus_Jakarta_Sans',sans-serif] flex flex-col md:items-center md:justify-center md:py-8 md:px-4 antialiased selection:bg-[#834F3A]/30 selection:text-[#834F3A]">
+      
+      {/* PC Client Preview Badge (Desktop only) */}
+      <div className="hidden md:flex items-center gap-2 mb-3 text-xs font-semibold text-[#834F3A] bg-white/85 backdrop-blur-sm px-4 py-1.5 rounded-full border border-[#DDD5CC] shadow-sm select-none">
+        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+        <span>Count On Us — Mobile App Client Prototype</span>
+      </div>
 
-      {/* Main Content: full width, naturally scrollable across all screen sizes */}
-      <main className="flex-1 w-full max-w-lg mx-auto flex flex-col relative overscroll-contain">
-        {(!isAuthenticated || currentTab === 'welcome') && (
-          <WelcomeScreen onLogin={handleLogin} />
-        )}
+      {/* Main Container: Full viewport on mobile phone (< md) / Realistic Phone Wrapper on PC (>= md) */}
+      <div className="w-full min-h-screen flex flex-col bg-[#FBF9F7] md:w-[390px] md:h-[844px] md:min-h-[844px] md:max-h-[844px] md:rounded-[48px] md:border-[10px] md:border-[#22252B] md:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.35),0_0_0_1px_rgba(0,0,0,0.06)] md:overflow-hidden md:relative">
+        
+        {/* iOS Status Bar: Visible on PC wrapper, hidden on real mobile phones */}
+        <div className="hidden md:block flex-shrink-0 bg-[#FBF9F7]">
+          <StatusBar dark={false} />
+        </div>
 
-        {isAuthenticated && currentTab === 'home' && (
-          <HomeScreen
-            onNavigate={setCurrentTab}
-            onOpenUpload={() => setIsUploadOpen(true)}
-            onOpenMessage={() => setIsMessageOpen(true)}
-            onOpenDoc={(doc) => setSelectedDoc(doc)}
+        {/* Persistent Top Header */}
+        {isAuthenticated && currentTab !== 'welcome' && (
+          <Header
+            title={getScreenTitle()}
+            unreadCount={2}
+            onNotificationClick={() => setIsNotificationOpen(true)}
+            onProfileClick={() => setCurrentTab('profile')}
           />
         )}
 
-        {isAuthenticated && currentTab === 'docs' && (
-          <DocsScreen
-            onOpenUpload={() => setIsUploadOpen(true)}
-            onSelectDoc={(doc) => setSelectedDoc(doc)}
+        {/* Main Content Area: Smooth scrolling */}
+        <main className="flex-1 w-full overflow-y-auto relative overscroll-contain">
+          {(!isAuthenticated || currentTab === 'welcome') && (
+            <WelcomeScreen onLogin={handleLogin} />
+          )}
+
+          {isAuthenticated && currentTab === 'home' && (
+            <HomeScreen
+              onNavigate={setCurrentTab}
+              onOpenUpload={() => setIsUploadOpen(true)}
+              onOpenMessage={() => setIsMessageOpen(true)}
+              onOpenDoc={(doc) => setSelectedDoc(doc)}
+            />
+          )}
+
+          {isAuthenticated && currentTab === 'docs' && (
+            <DocsScreen
+              onOpenUpload={() => setIsUploadOpen(true)}
+              onSelectDoc={(doc) => setSelectedDoc(doc)}
+            />
+          )}
+
+          {isAuthenticated && currentTab === 'booking' && (
+            <BookingScreen
+              onConfirmBooking={(details) => setConfirmedBooking(details)}
+            />
+          )}
+
+          {isAuthenticated && currentTab === 'bills' && (
+            <InvoicesScreen
+              onOpenPayment={() => setIsPaymentOpen(true)}
+            />
+          )}
+
+          {isAuthenticated && currentTab === 'profile' && (
+            <ProfileScreen
+              onLogout={handleLogout}
+            />
+          )}
+        </main>
+
+        {/* Bottom Navigation */}
+        {isAuthenticated && currentTab !== 'welcome' && (
+          <BottomNav
+            currentTab={currentTab}
+            setTab={setCurrentTab}
           />
         )}
 
-        {isAuthenticated && currentTab === 'booking' && (
-          <BookingScreen
-            onConfirmBooking={(details) => setConfirmedBooking(details)}
-          />
-        )}
-
-        {isAuthenticated && currentTab === 'bills' && (
-          <InvoicesScreen
-            onOpenPayment={() => setIsPaymentOpen(true)}
-          />
-        )}
-
-        {isAuthenticated && currentTab === 'profile' && (
-          <ProfileScreen
-            onLogout={handleLogout}
-          />
-        )}
-      </main>
-
-      {/* Bottom Navigation: pinned edge-to-edge at bottom across mobile */}
-      {isAuthenticated && currentTab !== 'welcome' && (
-        <BottomNav
-          currentTab={currentTab}
-          setTab={setCurrentTab}
-        />
-      )}
+        {/* Home Indicator Bar on PC wrapper */}
+        <div className="hidden md:block absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-black/25 rounded-full z-50 pointer-events-none" />
+      </div>
 
       {/* Global Interactive Modals */}
       <UploadModal
