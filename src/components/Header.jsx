@@ -10,7 +10,7 @@ export default function Header({
   onProfileClick 
 }) {
   return (
-    <header className="sticky top-0 left-0 right-0 z-30 w-full border-b border-[#EDE6E1]/70 bg-[#FBF9F7]/95 backdrop-blur-sm">
+    <header className="sticky top-0 left-0 right-0 z-30 w-full flex-shrink-0 border-b border-[#EDE6E1]/70 bg-[#FBF9F7]/95 backdrop-blur-sm">
       <div className="w-full max-w-lg mx-auto px-4 py-3 flex items-center justify-between relative">
         {/* Left brand logo with Tampa, FL submark */}
         <div className="flex items-center gap-2">

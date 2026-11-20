@@ -53,7 +53,7 @@ export default function App() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#FBF9F7] md:bg-[#ECE7E1] text-[#1B1C1B] font-['Plus_Jakarta_Sans',sans-serif] flex flex-col md:items-center md:justify-center md:py-8 md:px-4 antialiased selection:bg-[#834F3A]/30 selection:text-[#834F3A]">
+    <div className="w-full h-screen h-[100dvh] md:h-auto md:min-h-screen bg-[#FBF9F7] md:bg-[#ECE7E1] text-[#1B1C1B] font-['Plus_Jakarta_Sans',sans-serif] flex flex-col md:items-center md:justify-center md:py-8 md:px-4 antialiased selection:bg-[#834F3A]/30 selection:text-[#834F3A] overflow-hidden md:overflow-visible">
       
       {/* PC Client Preview Badge (Desktop only) */}
       <div className="hidden md:flex items-center gap-2 mb-3 text-xs font-semibold text-[#834F3A] bg-white/85 backdrop-blur-sm px-4 py-1.5 rounded-full border border-[#DDD5CC] shadow-sm select-none">
@@ -62,7 +62,7 @@ export default function App() {
       </div>
 
       {/* Main Container: Full viewport on mobile phone (< md) / Realistic Phone Wrapper on PC (>= md) */}
-      <div className="w-full min-h-screen flex flex-col bg-[#FBF9F7] md:w-[390px] md:h-[844px] md:min-h-[844px] md:max-h-[844px] md:rounded-[48px] md:border-[10px] md:border-[#22252B] md:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.35),0_0_0_1px_rgba(0,0,0,0.06)] md:overflow-hidden md:relative">
+      <div className="w-full h-full md:w-[390px] md:h-[844px] md:min-h-[844px] md:max-h-[844px] flex flex-col bg-[#FBF9F7] overflow-hidden relative md:rounded-[48px] md:border-[10px] md:border-[#22252B] md:shadow-[0_25px_70px_-10px_rgba(0,0,0,0.35),0_0_0_1px_rgba(0,0,0,0.06)]">
         
         {/* iOS Status Bar: Visible on PC wrapper, hidden on real mobile phones */}
         <div className="hidden md:block flex-shrink-0 bg-[#FBF9F7]">
@@ -80,7 +80,7 @@ export default function App() {
         )}
 
         {/* Main Content Area: Smooth scrolling */}
-        <main className="flex-1 w-full overflow-y-auto relative overscroll-contain">
+        <main className="flex-1 min-h-0 w-full overflow-y-auto relative overscroll-contain [-webkit-overflow-scrolling:touch]">
           {(!isAuthenticated || currentTab === 'welcome') && (
             <WelcomeScreen onLogin={handleLogin} />
           )}

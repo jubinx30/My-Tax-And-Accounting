@@ -11,7 +11,7 @@ export default function BottomNav({ currentTab, setTab }) {
   ];
 
   return (
-    <div className="sticky bottom-0 left-0 right-0 w-full bg-white border-t border-[#EFEAE5] shadow-[0_-4px_20px_rgba(131,79,58,0.04)] select-none z-40">
+    <div className="sticky bottom-0 left-0 right-0 w-full flex-shrink-0 bg-white border-t border-[#EFEAE5] shadow-[0_-4px_20px_rgba(131,79,58,0.04)] select-none z-40">
       <nav 
         aria-label="Main Navigation"
         className="grid grid-cols-5 w-full items-end max-w-lg mx-auto px-1 pt-2 pb-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]"
