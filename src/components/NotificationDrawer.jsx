@@ -34,7 +34,7 @@ export default function NotificationDrawer({ isOpen, onClose, onNavigate }) {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-end p-0 bg-black/60 backdrop-blur-sm animate-fadeIn">
       <div 
-        className="w-full max-w-[360px] h-full bg-[#FBF9F7] border-l border-[#EDE6E1] shadow-2xl flex flex-col p-5"
+        className="w-full max-w-sm sm:max-w-md h-full bg-[#FBF9F7] border-l border-[#EDE6E1] shadow-2xl flex flex-col p-5"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3 border-b border-[#EDE6E1]">

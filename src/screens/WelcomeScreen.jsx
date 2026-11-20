@@ -18,7 +18,7 @@ export default function WelcomeScreen({ onLogin }) {
   };
 
   return (
-    <div className="flex-1 flex flex-col justify-between px-6 py-8 min-h-screen">
+    <div className="flex-1 flex flex-col justify-between px-6 py-6 min-h-full w-full max-w-md mx-auto">
       {/* Top spacer with subtle security indicator */}
       <div className="flex items-center justify-center pt-2">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF5F0] text-[#487A64] text-xs font-semibold border border-[#D2E8DD]/60">

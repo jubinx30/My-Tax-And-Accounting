@@ -41,7 +41,7 @@ export default function UploadModal({ isOpen, onClose, onUploaded }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
       <div 
-        className="w-full max-w-[390px] bg-white rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-[#EDE6E1] transform transition-all"
+        className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-[#EDE6E1] transform transition-all"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
