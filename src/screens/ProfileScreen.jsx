@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { mockUser, mockAdvisor } from '../data/mockData';
 
-export default function ProfileScreen({ onLogout, onOpenPersonalInfo }) {
+export default function ProfileScreen({ onLogout, onOpenPersonalInfo, onOpenSecurity }) {
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
   const [faceIdEnabled, setFaceIdEnabled] = useState(true);
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(true);
@@ -124,7 +124,7 @@ export default function ProfileScreen({ onLogout, onOpenPersonalInfo }) {
 
         {/* Security */}
         <div 
-          onClick={() => alert("Security: Face ID & 2-Factor Authentication are ACTIVE.")}
+          onClick={onOpenSecurity}
           className="p-3.5 flex items-center justify-between hover:bg-[#FBF9F7] transition cursor-pointer touch-press"
         >
           <div className="flex items-center gap-3">

@@ -17,6 +17,7 @@ import BookingConfirmModal from './components/BookingConfirmModal';
 import DocPreviewModal from './components/DocPreviewModal';
 import NotificationDrawer from './components/NotificationDrawer';
 import PersonalInfoModal from './components/PersonalInfoModal';
+import SecurityModal from './components/SecurityModal';
 
 export default function App() {
   // Current screen state: 'welcome', 'home', 'docs', 'booking', 'bills', 'profile'
@@ -29,6 +30,7 @@ export default function App() {
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState(false);
+  const [isSecurityOpen, setIsSecurityOpen] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [confirmedBooking, setConfirmedBooking] = useState(null);
 
@@ -119,6 +121,7 @@ export default function App() {
             <ProfileScreen
               onLogout={handleLogout}
               onOpenPersonalInfo={() => setIsPersonalInfoOpen(true)}
+              onOpenSecurity={() => setIsSecurityOpen(true)}
             />
           )}
         </main>
@@ -177,6 +180,11 @@ export default function App() {
         <PersonalInfoModal
           isOpen={isPersonalInfoOpen}
           onClose={() => setIsPersonalInfoOpen(false)}
+        />
+
+        <SecurityModal
+          isOpen={isSecurityOpen}
+          onClose={() => setIsSecurityOpen(false)}
         />
       </div>
     </div>
