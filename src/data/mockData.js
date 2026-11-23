@@ -21,14 +21,27 @@ export const mockAdvisor = {
 
 export const mockReturnStatus = {
   taxYear: "2026",
-  form: "Individual Return (1040)",
+  form: "Form 1040 (Individual Return)",
+  filingType: "Joint Federal Return",
+  filingStatus: "Married Filing Jointly",
+  stateReturn: "Florida • No State Income Tax",
   status: "In Review",
   stage: 3,
   totalStages: 4,
-  stageTitle: "Stage 3 of 4: Deduction Optimization",
+  stageTitle: "Deduction Optimization",
+  stageDescription: "Marcus is finalizing Schedule C deductions & EV clean vehicle credit.",
   progressPercent: 75,
+  estCompletion: "Mar 24, 2026",
+  irsDeadline: "Apr 15, 2026",
+  daysRemaining: 22,
   refundEstimate: 4820,
-  refundDifference: "+ $350 vs 2023",
+  refundDifference: "+ $350 vs 2025",
+  milestones: [
+    { id: 1, label: "Intake", status: "completed" },
+    { id: 2, label: "Doc Audit", status: "completed" },
+    { id: 3, label: "Deductions", status: "active" },
+    { id: 4, label: "E-File", status: "pending" },
+  ],
   upcomingEvent: {
     date: "Mar 18, 2:30 PM",
     title: "Video Consultation",
@@ -70,12 +83,12 @@ export const mockActivities = [
 export const mockDocuments = [
   {
     id: "doc-1",
-    name: "2024_Form_1040_Draft.pdf",
+    name: "2026_Form_1040_Draft.pdf",
     category: "Tax",
-    date: "Mar 12, 2025",
+    date: "Mar 14, 2026",
     size: "2.4 MB",
-    status: "Verified",
-    statusType: "sage",
+    status: "In Review",
+    statusType: "terracotta",
   },
   {
     id: "doc-2",
