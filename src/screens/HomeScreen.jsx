@@ -133,26 +133,6 @@ export default function HomeScreen({
           </div>
         </div>
 
-        {/* Assigned CPA Row inside hero card */}
-        <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between">
-          <div className="flex items-center gap-2 min-w-0">
-            <img 
-              src={mockAdvisor.avatar} 
-              alt={mockAdvisor.name}
-              className="w-5 h-5 rounded-full object-cover ring-1 ring-[#834F3A] flex-shrink-0" 
-            />
-            <span className="text-[11px] text-gray-200 truncate">
-              Assigned CPA: <span className="font-semibold text-white">{mockAdvisor.name}</span>
-            </span>
-          </div>
-          <button
-            onClick={onOpenMessage}
-            className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#FFD7C2] hover:text-white bg-white/10 hover:bg-white/20 px-2 py-0.5 rounded-lg transition touch-press flex-shrink-0"
-          >
-            <MessageSquare className="w-2.5 h-2.5" />
-            Message
-          </button>
-        </div>
       </div>
 
       {/* Side-by-side Metric Tiles */}
