@@ -23,7 +23,8 @@ export default function HomeScreen({
   onNavigate, 
   onOpenUpload, 
   onOpenMessage, 
-  onOpenDoc 
+  onOpenDoc,
+  onOpenTaxStatus
 }) {
   return (
     <div className="flex-1 flex flex-col px-5 pt-3 pb-24 space-y-4">
@@ -94,14 +95,22 @@ export default function HomeScreen({
               Federal & Florida Return
             </h3>
           </div>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#BA5D48]/25 text-[#FFB4A2] border border-[#BA5D48]/40 shadow-sm">
+          <span 
+            onClick={onOpenTaxStatus}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#BA5D48]/25 text-[#FFB4A2] border border-[#BA5D48]/40 shadow-sm cursor-pointer hover:bg-[#BA5D48]/40 transition"
+            title="Click to view tax return progress & milestone breakdown"
+          >
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF896B] animate-pulse" />
             {mockReturnStatus.status} • Stage 3/4
           </span>
         </div>
 
         {/* 4-Step Milestone Progress Pipeline */}
-        <div className="mt-3 pt-3 border-t border-white/10 relative z-10">
+        <div 
+          onClick={onOpenTaxStatus}
+          className="mt-3 pt-3 border-t border-white/10 relative z-10 cursor-pointer hover:opacity-90 transition"
+          title="Click to view full milestone breakdown"
+        >
           <div className="grid grid-cols-4 gap-1 text-center">
             {mockReturnStatus.milestones.map((ms, idx) => {
               const isCompleted = ms.status === 'completed';
@@ -135,9 +144,13 @@ export default function HomeScreen({
         </div>
 
         {/* Circular Progress & Stage Details */}
-        <div className="mt-3 flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-2.5 backdrop-blur-sm relative z-10">
+        <div 
+          onClick={onOpenTaxStatus}
+          className="mt-3 flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-xl p-2.5 backdrop-blur-sm relative z-10 cursor-pointer group transition touch-press"
+          title="Click circular graph to view return progress & milestone breakdown"
+        >
           {/* SVG Circular Progress Meter */}
-          <div className="relative w-12 h-12 flex-shrink-0 flex items-center justify-center">
+          <div className="relative w-12 h-12 flex-shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform">
             <svg className="w-12 h-12 -rotate-90 transform" viewBox="0 0 48 48">
               <circle
                 cx="24"
@@ -173,8 +186,8 @@ export default function HomeScreen({
               <span className="text-[10px] font-bold text-[#A7D7C5] uppercase tracking-wide">
                 {mockReturnStatus.stageTitle}
               </span>
-              <span className="text-[9px] text-gray-400 font-medium">
-                Est: {mockReturnStatus.estCompletion}
+              <span className="text-[9px] text-[#E8B298] font-bold group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                Details <ChevronRight className="w-2.5 h-2.5" />
               </span>
             </div>
             <p className="text-[10px] text-gray-200 mt-0.5 line-clamp-1 leading-snug">

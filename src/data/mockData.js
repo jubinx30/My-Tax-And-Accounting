@@ -37,10 +37,38 @@ export const mockReturnStatus = {
   refundEstimate: 4820,
   refundDifference: "+ $350 vs 2025",
   milestones: [
-    { id: 1, label: "Intake", status: "completed" },
-    { id: 2, label: "Doc Audit", status: "completed" },
-    { id: 3, label: "Deductions", status: "active" },
-    { id: 4, label: "E-File", status: "pending" },
+    { 
+      id: 1, 
+      label: "Intake", 
+      title: "Intake & Questionnaire", 
+      description: "Questionnaire, identity verification & 2025 prior return cross-check completed.", 
+      date: "Completed Feb 12", 
+      status: "completed" 
+    },
+    { 
+      id: 2, 
+      label: "Doc Audit", 
+      title: "Document Audit & Crosscheck", 
+      description: "W-2s, 1099-NEC & 1098 mortgage interest verified by Marcus Vance, CPA.", 
+      date: "Completed Mar 02", 
+      status: "completed" 
+    },
+    { 
+      id: 3, 
+      label: "Deductions", 
+      title: "Deduction & Credit Optimization", 
+      description: "Finalizing Schedule C business write-offs & Clean Vehicle EV tax credit.", 
+      date: "Active • In Progress", 
+      status: "active" 
+    },
+    { 
+      id: 4, 
+      label: "E-File", 
+      title: "Client Sign-off & IRS E-File", 
+      description: "Form 8879 digital authorization & e-file submission before April 15 deadline.", 
+      date: "Target: Mar 24", 
+      status: "pending" 
+    },
   ],
   upcomingEvent: {
     date: "Mar 18, 2:30 PM",

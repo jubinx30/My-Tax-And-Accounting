@@ -18,6 +18,7 @@ import DocPreviewModal from './components/DocPreviewModal';
 import NotificationDrawer from './components/NotificationDrawer';
 import PersonalInfoModal from './components/PersonalInfoModal';
 import SecurityModal from './components/SecurityModal';
+import TaxProgressModal from './components/TaxProgressModal';
 
 export default function App() {
   // Current screen state: 'welcome', 'home', 'docs', 'booking', 'bills', 'profile'
@@ -28,6 +29,7 @@ export default function App() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isMessageOpen, setIsMessageOpen] = useState(false);
+  const [isTaxStatusOpen, setIsTaxStatusOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState(false);
   const [isSecurityOpen, setIsSecurityOpen] = useState(false);
@@ -95,6 +97,7 @@ export default function App() {
               onOpenUpload={() => setIsUploadOpen(true)}
               onOpenMessage={() => setIsMessageOpen(true)}
               onOpenDoc={(doc) => setSelectedDoc(doc)}
+              onOpenTaxStatus={() => setIsTaxStatusOpen(true)}
             />
           )}
 
@@ -185,6 +188,13 @@ export default function App() {
         <SecurityModal
           isOpen={isSecurityOpen}
           onClose={() => setIsSecurityOpen(false)}
+        />
+
+        <TaxProgressModal
+          isOpen={isTaxStatusOpen}
+          onClose={() => setIsTaxStatusOpen(false)}
+          onOpenMessage={() => setIsMessageOpen(true)}
+          onOpenDoc={(doc) => setSelectedDoc(doc)}
         />
       </div>
     </div>
