@@ -32,9 +32,9 @@ export default function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-sm">
+    <div className="fixed md:absolute inset-0 z-50 flex items-end justify-center p-0 bg-black/60 backdrop-blur-sm">
       <div 
-        className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-[#EDE6E1]"
+        className="w-full bg-white rounded-t-3xl p-5 shadow-2xl border border-[#EDE6E1]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3 border-b border-[#EDE6E1]">

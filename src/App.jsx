@@ -16,6 +16,7 @@ import MessageAdvisorModal from './components/MessageAdvisorModal';
 import BookingConfirmModal from './components/BookingConfirmModal';
 import DocPreviewModal from './components/DocPreviewModal';
 import NotificationDrawer from './components/NotificationDrawer';
+import PersonalInfoModal from './components/PersonalInfoModal';
 
 export default function App() {
   // Current screen state: 'welcome', 'home', 'docs', 'booking', 'bills', 'profile'
@@ -27,6 +28,7 @@ export default function App() {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
   const [isMessageOpen, setIsMessageOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [confirmedBooking, setConfirmedBooking] = useState(null);
 
@@ -116,6 +118,7 @@ export default function App() {
           {isAuthenticated && currentTab === 'profile' && (
             <ProfileScreen
               onLogout={handleLogout}
+              onOpenPersonalInfo={() => setIsPersonalInfoOpen(true)}
             />
           )}
         </main>
@@ -130,47 +133,52 @@ export default function App() {
 
         {/* Home Indicator Bar on PC wrapper */}
         <div className="hidden md:block absolute bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-black/25 rounded-full z-50 pointer-events-none" />
+
+        {/* Modals contained inside the mobile wrapper on desktop */}
+        <UploadModal
+          isOpen={isUploadOpen}
+          onClose={() => setIsUploadOpen(false)}
+          onUploaded={(doc) => {
+            setSelectedDoc(doc);
+          }}
+        />
+
+        <PaymentModal
+          isOpen={isPaymentOpen}
+          onClose={() => setIsPaymentOpen(false)}
+          onPaymentSuccess={() => {
+            // Success triggered
+          }}
+        />
+
+        <MessageAdvisorModal
+          isOpen={isMessageOpen}
+          onClose={() => setIsMessageOpen(false)}
+        />
+
+        <BookingConfirmModal
+          isOpen={Boolean(confirmedBooking)}
+          bookingDetails={confirmedBooking}
+          onClose={() => setConfirmedBooking(null)}
+        />
+
+        <DocPreviewModal
+          isOpen={Boolean(selectedDoc)}
+          doc={selectedDoc}
+          onClose={() => setSelectedDoc(null)}
+        />
+
+        <NotificationDrawer
+          isOpen={isNotificationOpen}
+          onClose={() => setIsNotificationOpen(false)}
+          onNavigate={(tab) => setCurrentTab(tab)}
+        />
+
+        <PersonalInfoModal
+          isOpen={isPersonalInfoOpen}
+          onClose={() => setIsPersonalInfoOpen(false)}
+        />
       </div>
-
-      {/* Global Interactive Modals */}
-      <UploadModal
-        isOpen={isUploadOpen}
-        onClose={() => setIsUploadOpen(false)}
-        onUploaded={(doc) => {
-          setSelectedDoc(doc);
-        }}
-      />
-
-      <PaymentModal
-        isOpen={isPaymentOpen}
-        onClose={() => setIsPaymentOpen(false)}
-        onPaymentSuccess={() => {
-          // Success triggered
-        }}
-      />
-
-      <MessageAdvisorModal
-        isOpen={isMessageOpen}
-        onClose={() => setIsMessageOpen(false)}
-      />
-
-      <BookingConfirmModal
-        isOpen={Boolean(confirmedBooking)}
-        bookingDetails={confirmedBooking}
-        onClose={() => setConfirmedBooking(null)}
-      />
-
-      <DocPreviewModal
-        isOpen={Boolean(selectedDoc)}
-        doc={selectedDoc}
-        onClose={() => setSelectedDoc(null)}
-      />
-
-      <NotificationDrawer
-        isOpen={isNotificationOpen}
-        onClose={() => setIsNotificationOpen(false)}
-        onNavigate={(tab) => setCurrentTab(tab)}
-      />
     </div>
   );
 }
