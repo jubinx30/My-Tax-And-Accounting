@@ -42,7 +42,7 @@ export const mockReturnStatus = {
       label: "Intake", 
       title: "Intake & Questionnaire", 
       description: "Questionnaire, identity verification & 2025 prior return cross-check completed.", 
-      date: "Completed Feb 12", 
+      date: "Feb 12", 
       status: "completed" 
     },
     { 
@@ -50,7 +50,7 @@ export const mockReturnStatus = {
       label: "Doc Audit", 
       title: "Document Audit & Crosscheck", 
       description: "W-2s, 1099-NEC & 1098 mortgage interest verified by Marcus Vance, CPA.", 
-      date: "Completed Mar 02", 
+      date: "Mar 02", 
       status: "completed" 
     },
     { 
@@ -58,7 +58,7 @@ export const mockReturnStatus = {
       label: "Deductions", 
       title: "Deduction & Credit Optimization", 
       description: "Finalizing Schedule C business write-offs & Clean Vehicle EV tax credit.", 
-      date: "Active • In Progress", 
+      date: "Est. Mar 18", 
       status: "active" 
     },
     { 

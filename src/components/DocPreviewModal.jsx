@@ -5,11 +5,17 @@ export default function DocPreviewModal({ isOpen, doc, onClose }) {
   if (!isOpen || !doc) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-sm">
+    <div 
+      className="fixed md:absolute inset-0 z-50 flex items-end justify-center p-0 bg-black/60 backdrop-blur-sm animate-fadeIn"
+      onClick={onClose}
+    >
       <div 
-        className="w-full max-w-lg bg-white rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl border border-[#EDE6E1]"
+        className="w-full bg-white rounded-t-3xl p-5 shadow-2xl border border-[#EDE6E1] overflow-y-auto max-h-[90%] md:max-h-[88%] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Drag handle pill */}
+        <div className="w-10 h-1 bg-[#EDE6E1] rounded-full mx-auto mb-3 flex-shrink-0" />
+
         <div className="flex items-center justify-between pb-3 border-b border-[#EDE6E1]">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-[#FBF9F7] text-[#834F3A] flex items-center justify-center border border-[#EDE6E1]">

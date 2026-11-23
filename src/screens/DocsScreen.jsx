@@ -173,7 +173,7 @@ export default function DocsScreen({ onOpenUpload, onSelectDoc }) {
       </div>
 
       {/* Floating Action Button (FAB) at bottom right */}
-      <div className="fixed bottom-24 right-5 max-w-[412px] z-30">
+      <div className="fixed md:absolute bottom-24 right-5 max-w-[412px] z-30">
         <button
           onClick={onOpenUpload}
           className="flex items-center gap-2 bg-[#834F3A] hover:bg-[#A46B55] text-white px-4 py-2.5 rounded-full shadow-floating transition-all duration-200 touch-press hover:scale-105 active:scale-95"
